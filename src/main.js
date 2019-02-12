@@ -25,6 +25,9 @@ import router from './router'
 // 引入css
 import './style/common.css'
 
+import VueResource from 'vue-resource'
+Vue.use(VueResource)
+
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */

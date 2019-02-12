@@ -2,7 +2,7 @@
   <div id="app">
      <!-- 顶部 Header 区域 -->
     <mt-header fixed title="黑马程序员·Vue项目"></mt-header>
-
+    <router-view/>
     <!-- 底部 -->
     <nav class="mui-bar mui-bar-tab">
 			<router-link class="mui-tab-item" to="/home">
