@@ -6,6 +6,15 @@ import Vue from 'vue'
 import '../dist/mui/css/mui.min.css'
 import '../dist/mui/css/icons-extra.css'
 
+// 导入格式化时间的插件
+import moment from 'moment'
+// 定义全局过滤器
+Vue.filter('dataFormat',function(dataStr,pattern="YYYY-MM-DD HH:mm:ss"){
+  return moment(dataStr).format(pattern)
+})
+
+
+
 // // 按需导入 Mint-UI 中的组件   
 // import { Header, Swipe, SwipeItem, Button } from 'mint-ui'
 // Vue.component(Header.name, Header)
@@ -22,11 +31,16 @@ Vue.use(MintUI)
 import App from './App'
 import router from './router'
 
+
 // 引入css
 import './style/common.css'
 
 import VueResource from 'vue-resource'
 Vue.use(VueResource)
+
+// 设置请求的根路径
+Vue.http.options.root = 'http://www.lovegf.cn:8899/api/'
+
 
 Vue.config.productionTip = false
 
