@@ -2,9 +2,9 @@
       <div class="cmt-container">
     <h3>发表评论</h3>
     <hr>
-    <textarea placeholder="请输入要BB的内容（做多吐槽120字）" maxlength="120"></textarea>
+  <textarea placeholder="请输入要BB的内容（做多吐槽120字）" maxlength="120" v-model="commentContent"></textarea>
 
-    <mt-button type="primary" size="large">发表评论</mt-button>
+    <mt-button type="primary" size="large" @click="postComment">发表评论</mt-button>
 
     <div class="cmt-list">
       <div class="cmt-item" v-for="(item, i) in comments" :key="item.add_time">
@@ -54,7 +54,8 @@ export default {
   data() {
     return {
       pageIndex: 1, // 默认展示第一页数据
-      comments: [] // 所有的评论数据
+      comments: [], // 所有的评论数据
+      commentContent:''
     };
   },
   created() {
@@ -79,6 +80,24 @@ export default {
       // 加载更多
       this.pageIndex++;
       this.getComments();
+    },
+    postComment(){
+      // 1. 想办法把用户输入的内容提交给服务器
+      //  1.1 双向数据绑定textarea, 以便获取数据
+      //  1.2 当用户点击按钮时, 获取数据, 并且做非空校验
+      if(this.commentContent.trim().lenght ===0){
+        return Toast('评论内容不能为空')
+      }
+      //  1.3 发送ajax请求将内容提交给服务器
+      this.$http.post('postcomment/'+this.id,{content:this.commentContent},)
+      .then(result=>{
+        
+          this.comments=[]
+          this.pageIndex=1
+          this.getComments();
+          this.commentContent=''
+        
+      })
     }
   },
   props: ["id"]
