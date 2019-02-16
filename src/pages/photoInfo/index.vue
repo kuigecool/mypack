@@ -28,6 +28,8 @@
   </div>
 </template>
 <script>
+// 1. 导入 评论子组件
+// import comment from "../../components/subcomponents/comment.vue";
 export default {
   data() {
     return {

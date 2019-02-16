@@ -12,6 +12,9 @@ import moment from 'moment'
 Vue.filter('dataFormat',function(dataStr,pattern="YYYY-MM-DD HH:mm:ss"){
   return moment(dataStr).format(pattern)
 })
+// 全局注册组件
+import comment from './components/subcomponents/comment.vue'
+Vue.component('comment', comment)
 // 安装vue-pic-preview
 import VuePreview from 'vue-pic-preview'
 Vue.use(VuePreview)
