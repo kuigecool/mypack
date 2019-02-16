@@ -15,6 +15,9 @@ Vue.filter('dataFormat',function(dataStr,pattern="YYYY-MM-DD HH:mm:ss"){
 // 全局注册组件
 import comment from './components/subcomponents/comment.vue'
 Vue.component('comment', comment)
+
+import swiper from './components/subcomponents/swiper.vue'
+Vue.component('swiper', swiper)
 // 安装vue-pic-preview
 import VuePreview from 'vue-pic-preview'
 Vue.use(VuePreview)

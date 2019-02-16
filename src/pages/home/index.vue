@@ -1,13 +1,14 @@
 <template>
   <div class="home-container">
     <!-- 轮播图 -->
-    <mt-swipe :auto="4000">
+    <!-- <mt-swipe :auto="4000">
       <mt-swipe-item v-for="(item,index) in banners" :key="index">
           <a :href="item.url">
           <img :src="item.img">
         </a>
       </mt-swipe-item>
-    </mt-swipe>
+    </mt-swipe> -->
+    <swiper :banners="banners" :fullscreen="true"></swiper>
 
 
 

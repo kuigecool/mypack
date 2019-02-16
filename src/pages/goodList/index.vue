@@ -1,7 +1,13 @@
 <template>
-    <div class="goods-list">
-        <router-link class="goods-item" v-for="item in goodslist" :key="item.id" :to="'/home/goodsinfo/' + item.id" tag="div">
-      <img :src="item.img_url" alt="">
+  <div class="goods-list">
+    <router-link
+      class="goods-item"
+      v-for="item in goodslist"
+      :key="item.id"
+      :to="'/home/goodsinfo/' + item.id"
+      tag="div"
+    >
+      <img :src="item.img_url" alt>
       <h1 class="title">{{ item.title }}</h1>
       <div class="info">
         <p class="price">
@@ -14,29 +20,36 @@
         </p>
       </div>
     </router-link>
-    </div>
+    <mt-button type="danger" size="large" @click="getMore">加载更多</mt-button>
+  </div>
 </template>
 <script>
 export default {
-    data(){
-        return {
-            goodslist:[],
-            pageindex:1
-
+  data() {
+    return {
+      goodslist: [],
+      pageindex: 1
+    };
+  },
+  created() {
+    this.getgoodList();
+  },
+  methods: {
+    getgoodList() {
+      this.$http.get("getgoods?pageindex=" + this.pageindex).then(result => {
+        console.log(result.body.message);
+        if(result.body.status===0){
+            this.goodslist = this.goodslist.concat(result.body.message);
         }
+        
+      });
     },
-    created(){
+    getMore(){
+        this.pageindex++
         this.getgoodList()
-    },
-    methods:{
-        getgoodList(){
-            this.$http.get('getgoods?pageindex='+this.pageindex).then(result=>{
-                console.log(result.body.message)
-                this.goodslist=result.body.message
-            })
-        }
     }
-}
+  }
+};
 </script>
 <style lang="less" scoped>
 .goods-list {
