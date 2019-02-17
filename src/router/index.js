@@ -12,6 +12,8 @@ import photoList from '../pages/photoList'
 import photoInfo from '../pages/photoInfo'
 import goodList from '../pages/goodList'
 import goodsinfo from '../pages/goodsInfo'
+import goodsDesc from '../pages/goodsDesc'
+import goodsComment from '../pages/goodsComment'
 
 Vue.use(Router)
 
@@ -27,6 +29,8 @@ export default new Router({
     {path:'/home/photoList',component:photoList},
     {path:'/home/photoInfo/:id',component:photoInfo},
     {path: '/home/goodsList',component:goodList},
-    {path: '/home/goodsinfo/:id',component:goodsinfo}
+    {path: '/home/goodsinfo/:id',component:goodsinfo},
+    {path: '/home/goodsDesc/:id',component:goodsDesc},
+    {path: '/home/goodsComment/:id',component:goodsComment}
   ]
 })
